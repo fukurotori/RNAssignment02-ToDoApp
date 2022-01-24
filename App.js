@@ -1,17 +1,7 @@
 import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  View,
-  TextInput,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import { StyleSheet, SafeAreaView, View, TextInput, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const COLORS = {primary: '#1f145c', white: '#fff'};
 
 const App = () => {
   const [todos, setTodos] = React.useState([]);
@@ -27,7 +17,7 @@ const App = () => {
 
   const addTodo = () => {
     if (textInput == '') {
-      Alert.alert('Error', 'Please input todo');
+      Alert.alert('Error', 'Task can not be empty');
     } else {
       const newTodo = {
         id: Math.random(),
@@ -95,7 +85,7 @@ const App = () => {
             style={{
               fontWeight: 'bold',
               fontSize: 15,
-              color: COLORS.primary,
+              color: 'purple',
               textDecorationLine: todo?.completed ? 'line-through' : 'none',
             }}>
             {todo?.task}
@@ -127,9 +117,9 @@ const App = () => {
           style={{
             fontWeight: 'bold',
             fontSize: 20,
-            color: COLORS.primary,
+            color: 'purple',
           }}>
-          TODO APP
+          TOOOOOO DOOOOOOO
         </Text>
         <Icon name="delete" size={25} color="red" onPress={clearAllTodos} />
       </View>
@@ -144,7 +134,7 @@ const App = () => {
         <View style={styles.inputContainer}>
           <TextInput
             value={textInput}
-            placeholder="Add Todo"
+            placeholder="Add Task"
             onChangeText={text => setTextInput(text)}
           />
         </View>
@@ -159,6 +149,14 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  
+  header: {
+    padding: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  
   footer: {
     position: 'absolute',
     bottom: 0,
@@ -166,22 +164,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
-    backgroundColor: COLORS.white,
+    backgroundColor: 'white',
   },
+
   inputContainer: {
     height: 50,
     paddingHorizontal: 20,
     elevation: 40,
-    backgroundColor: COLORS.white,
+    backgroundColor: 'white',
     flex: 1,
     marginVertical: 20,
     marginRight: 20,
     borderRadius: 30,
   },
+
   iconContainer: {
     height: 50,
     width: 50,
-    backgroundColor: COLORS.primary,
+    backgroundColor: 'orange',
     elevation: 40,
     borderRadius: 25,
     justifyContent: 'center',
@@ -190,28 +190,27 @@ const styles = StyleSheet.create({
 
   listItem: {
     padding: 20,
-    backgroundColor: COLORS.white,
+    backgroundColor: 'white',
     flexDirection: 'row',
     elevation: 12,
     borderRadius: 7,
     marginVertical: 10,
   },
+  
   actionIcon: {
     height: 25,
     width: 25,
-    backgroundColor: COLORS.white,
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'red',
     marginLeft: 5,
     borderRadius: 3,
   },
-  header: {
-    padding: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+
+  
+
+
 });
 
 export default App;
